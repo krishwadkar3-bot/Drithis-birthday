@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dittu's Birthday ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+/* PASSWORD SCREEN */
+#passwordScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8b0000, #ff1493);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff1744;
+    cursor: pointer;
+}
+
+#mainContent {
+    display: none;
+    background: linear-gradient(135deg, #ff0844, #ff5e9c, #ff99c8);
+    height: 100vh;
+    overflow: auto;
+}
+
+.container {
+    padding-top: 40px;
+}
+
+img {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.7);
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+#typewriter {
+    margin: 20px;
+    font-size: 1.3em;
+    min-height: 60px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff1744;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div id="passwordScreen">
+    <h1>Only for Dittu ❤️</h1>
+    <p>Enter the secret name 😌</p>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Unlock</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainContent">
+    <audio id="bgMusic" autoplay loop>
+        <source src="ishq.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>Happy Birthday My Dittu ❤️🎂</h1>
+        <img src="dittu.jpg" alt="Us">
+
+        <div id="typewriter"></div>
+
+        <button onclick="showPopup()">Click If You Go ULULULU 😭❤️</button>
+    </div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+    <h2>My Drama Queen ❤️</h2>
+    <p>
+    To the girl who gets ragebaited in 2 seconds 😌  
+    To the girl who randomly says ULULULU and steals my heart again and again.  
+    </p>
+    <p>
+    Dittu, you are my peace, my chaos, my comfort, my forever.  
+    I love you to heaven and back ♾️❤️  
+    </p>
+    <button onclick="closePopup()">Close 😘</button>
+</div>
+
+<script>
+// PASSWORD
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+    if(password === "drithi") {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        document.getElementById("bgMusic").play();
+    } else {
+        alert("Wrong password 😌 Try again Dittu.");
+    }
+}
+
+// TYPEWRITER
+const text = "Today the world celebrates the day my favorite human was born. And I celebrate the day my heart found its home. ❤️✨";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+typeWriter();
+
+// POPUP
+function showPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// FLOATING HEARTS
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
